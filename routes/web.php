@@ -16,3 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('search-teacher', 'studentController@getSearchTeacher');
+
+//ajax search teacher by department
+Route::post('searchbydep', 'studentController@searchByDep');
+
+//info teacher
+Route::get('teacher/info/{id}', 'studentController@getInfoTeacher');
