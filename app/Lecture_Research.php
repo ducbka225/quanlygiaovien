@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lecture_Research extends Model
 {
-    protected $table = "leacture_research";
+    protected $table = "lecture_research";
 
     public function user(){
     	return $this->belongsTo('App\User', 'id_user', 'id');
