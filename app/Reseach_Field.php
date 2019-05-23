@@ -9,7 +9,7 @@ class Reseach_Field extends Model
     protected $table = "research_field";
 
     public function lecture_research(){
-    	return $this->hasMany('App\Lecture_Reseach', 'id_research_field', 'id');
+    	return $this->hasMany('App\Lecture_Research', 'id_research_field', 'id');
     }
 
     public function lecture_qt(){

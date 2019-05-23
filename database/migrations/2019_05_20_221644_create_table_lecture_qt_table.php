@@ -17,8 +17,8 @@ class CreateTableLectureQtTable extends Migration
             $table->increments('id');
             $table->string('name');
 
-            $table->integer('id_user')->unsigned();
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            // $table->integer('id_user')->unsigned();
+            // $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
 
             $table->integer('id_research_field')->unsigned();
             $table->foreign('id_research_field')->references('id')->on('research_field')->onDelete('cascade');

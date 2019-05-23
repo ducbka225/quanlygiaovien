@@ -89,7 +89,7 @@
 	    	<ul style="list-style-type: none; padding: 0;">
 	    		@foreach($research as $r)
 	    		<li>
-	    			{{$r->name}}
+	    			{{$r->lecture_research->name}}
 	    			<a href="#">
 			          <span class="glyphicon glyphicon-remove" style="color: red"></span>
 			        </a>
@@ -108,9 +108,9 @@
 	    	<ul>
 	    		@foreach($lecture as $l)
 	    		<li>
-	    			{{$l->name }}
+	    			{{$l->lecture_qt->name }}
 
-	    			<a href="/deletelecture_qt/{{$l->id}}" class="w3-right" style="margin-right: 50%;">
+	    			<a href="/deletelecture_qt/{{$l->lecture_qt->id}}" class="w3-right" style="margin-right: 50%;">
 			          <span class="glyphicon glyphicon-remove" style="color: red"></span>
 			        </a>
     			</li>

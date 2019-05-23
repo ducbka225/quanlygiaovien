@@ -18,6 +18,8 @@ class CreateTableDepartmentTable extends Migration
             $table->string('department_name');
             $table->string('address');
             $table->string('phone');
+            $table->string('typedepartment');
+            $table->string('website');
             $table->timestamps();
         });
     }

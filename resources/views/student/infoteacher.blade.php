@@ -17,7 +17,7 @@
     		<p class="title-tt">Chủ đề nghiên cứu</p>
 	    	<ul style="list-style-type: none; padding: 0;">
 	    		@foreach($research as $r)
-	    		<li>{{$r->name}}</li>
+	    		<li>{{$r->lecture_research->name}}</li>
 	    		@endforeach
 	    	</ul>
     	</div>
@@ -26,14 +26,14 @@
     		<p class="title-tt">Lĩnh Vực Quan Tâm</p>
 	    	<ul>
 	    		@foreach($lecture as $l)
-	    		<li>{{$l->name}}</li>
+	    		<li>{{$l->lecture_qt->name}}</li>
 	    		@endforeach
 	    	</ul>
     	</div>
     	<hr>
     	<div class="col-lg-12">
     		<button class="btn btn-success btnBack" onclick="window.history.back();" > << Quay Lại </button>
-		</div>
+		  </div>
     </div>
 
     <div class="col-sm-5">

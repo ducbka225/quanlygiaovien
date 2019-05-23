@@ -41,3 +41,16 @@ Route::post('addlecture_qt', 'TeacherController@addLecture_qt')->middleware('tea
 Route::get('deletelecture_qt/{id}', 'TeacherController@deleteLecture_qt')->middleware('teacherLogin');
 
 //update avatar
+
+
+//loginadmin
+Route::get('admin/login', 'AdminController@getLoginAdmin');
+Route::post('/admin/login', 'AdminController@postLogin');
+//Đăng xuất
+Route::get('/admin/logout','AdminController@getLogout');
+
+//quanlydonvi
+Route::get('/quanlydonvi', 'AdminController@getQuanLyDonVi')->middleware('adminLogin');
+
+//listteacher
+Route::get('/listteacher', 'AdminController@getListTeacher')->middleware('adminLogin');

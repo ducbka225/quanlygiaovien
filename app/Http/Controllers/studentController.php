@@ -8,6 +8,8 @@ use App\Department_User;
 use App\Lecture_qt;
 use App\Lecture_Research;
 use App\User;
+use App\User_Research;
+use App\User_Lecture;
 use DB;
 
 class studentController extends Controller
@@ -37,8 +39,8 @@ class studentController extends Controller
 	    $result = DB::table('users')
             ->join('department_user','department_user.id_user','=','users.id')
             ->join('department', 'department_user.id_department','=','department.id')
-            ->join('lecture_qt', 'lecture_qt.id_user', '=', 'users.id')
-            ->where(['lecture_qt.id' => $req->idlec])
+            ->join('user_lecture', 'user_lecture.id_user', '=', 'users.id')
+            ->where(['user_lecture.id_lecture_qt' => $req->idlec])
             ->select('users.*', 'department.department_name')
             ->get();    
 	    return response()->json($result);
@@ -51,9 +53,9 @@ class studentController extends Controller
 		$user = User::where('id', $id)->first();
 
 		//get reseach by user
-		$research = Lecture_Research::where('id_user', $id)->get();  
+		$research = User_Research::where('id_user', $id)->get();  
         //get lecture_qt by user
-        $lecture = Lecture_qt::where('id_user', $id)->get();
+        $lecture = User_Lecture::where('id_user', $id)->get();
 
         //get department
         $department_user = Department_User::where('id_user', $id)->first();

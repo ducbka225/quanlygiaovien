@@ -9,6 +9,9 @@ use App\Lecture_qt;
 use App\Department_User;
 use App\User;
 use App\Reseach_Field;
+use App\User_Research;
+use App\User_Lecture;
+use DB;
 
 
 class TeacherController extends Controller
@@ -18,16 +21,24 @@ class TeacherController extends Controller
         $user = User::where('id', $id)->first();
 
         //get reseach by user
-        $research = Lecture_Research::where('id_user', $id)->get();  
+        $research = User_Research::where('id_user', $id)->get(); 
+
+        //get reseach 
         //get lecture_qt by user
-        $lecture = Lecture_qt::where('id_user', $id)->get();
+        $lecture = User_Lecture::where('id_user', $id)->get();
+
+        //get lecture 
+        $lectureadd = DB::table('lecture_qt')
+            ->join('research_field','research_field.id','=','lecture_qt.id_research_field')
+            ->select('research_field.*')
+            ->get();
 
         //get department
         $department_user = Department_User::where('id_user', $id)->first();
 
         //get all research
         $research_field = Reseach_Field::all();
-    	return view('teacher.updateinfo', compact('user', 'research', 'lecture', 'department_user', 'research_field'));
+    	return view('teacher.updateinfo', compact('user', 'research', 'lecture', 'department_user', 'research_field', 'lectureadd'));
     }
 
     // login
@@ -71,23 +82,26 @@ class TeacherController extends Controller
         $result = false;
         $id = Auth::User()->id;
         foreach($req->allVals as $allVals){
-            $lecture = Lecture_qt::where('id', $allVals)->first();
-            $lecturename = $lecture->name;
-            $research_field_id = $lecture->id_research_field;
-            $lecture_qt = new Lecture_qt;
+            $lecture = User_Lecture::where('id_lecture_qt', $allVals)
+                                    ->where('id_user', $id)->first();
+            if($lecture != null){
+                $result = true;
+            }
+
+            else
+            {
+            $lecture_qt = new User_Lecture;
             $lecture_qt->id_user = $id;
-            $lecture_qt->name = $lecturename;
-            $lecture_qt->id_research_field = $research_field_id;
+            $lecture_qt->id_lecture_qt = $allVals;
             $lecture_qt->save();
-            $result = true;
-            
+            }
         }
         return response()->json($result);
     }
 
     //delete lecture_qt
     public function deleteLecture_qt($id){
-        $lecture = Lecture_qt::where('id', $id)->first();
+        $lecture = User_Lecture::where('id_lecture_qt', $id)->first();
         $lecture->delete();
         return redirect()->back()->with('message', 'Đã Xóa');
     }
