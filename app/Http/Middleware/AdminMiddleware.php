@@ -22,11 +22,11 @@ class AdminMiddleware
                 return $next($request);
             }
             else{
-                return redirect('/admin/login');
+                return redirect('/admin/login')->with('message', 'Bạn không có đủ quyền năng');
             }
         }
         else{
-            return redirect('/admin/login');
+            return redirect('/admin/login')->with('message', 'Sai tài khoản hoặc mật khẩu');
         }
     }
 }

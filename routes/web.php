@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -50,10 +39,42 @@ Route::post('/admin/login', 'AdminController@postLogin');
 Route::get('/admin/logout','AdminController@getLogout');
 
 //quanlydonvi
-Route::get('/quanlydonvi', 'AdminController@getQuanLyDonVi')->middleware('adminLogin');
+Route::get('/quanlydonvi', 'AdminController@getQuanLyDonVi')->middleware('adminLogin')->name('listdep');
 
 //listteacher
-Route::get('/listteacher', 'AdminController@getListTeacher')->middleware('adminLogin');
+Route::get('/listteacher', 'AdminController@getListTeacher')->middleware('adminLogin')->name('listteacher');
 
 //import excel
 Route::post('importexcel', 'ImportExcelController@importexcel')->name('importexcel');
+
+//add teacher
+Route::get('addteacher', 'AdminController@getAddTeacher')->middleware('adminLogin')->name('addteacher');
+Route::post('addteacher', 'AdminController@postAddTeacher');
+
+//edit teacher
+Route::get('editteacher/{id}', 'AdminController@getEditTeacher')->middleware('adminLogin')->name('editteacher');
+Route::post('editteacher/{id}', 'AdminController@postEditTeacher');
+
+//delete teacher
+Route::get('deleteteacher/{id}','AdminController@getDeleteTeacher' )->middleware('adminLogin');
+
+//add teacher
+Route::get('adddep', 'AdminController@getAddDep')->middleware('adminLogin')->name('adddep');
+Route::post('adddep', 'AdminController@postAddDep');
+
+//edit teacher
+Route::get('editdep/{id}', 'AdminController@getEditDep')->middleware('adminLogin')->name('editdep');
+Route::post('editdep/{id}', 'AdminController@postEditDep');
+
+//delete teacher
+Route::get('deletedep/{id}','AdminController@getDeleteDep' )->middleware('adminLogin');
+
+//listresseach
+
+Route::get('listres', 'AdminController@getListRes')->middleware('adminLogin')->name('listres');
+Route::get('addres', 'AdminController@getAddRes')->middleware('adminLogin');
+Route::post('addres', 'AdminController@postAddRes')->middleware('adminLogin');
+
+Route::get('addlectres', 'AdminController@getAddLectRes')->middleware('adminLogin');
+Route::post('addlectres', 'AdminController@postAddLectRes')->middleware('adminLogin');
+Route::get('deletelectres/{id}', 'AdminController@deleteLectRes');

@@ -19,13 +19,7 @@
 				</div>
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-								<i class="lnr lnr-alarm"></i>
-								<span class="badge bg-danger"></span>
-							</a>
-							
-						</li>
+						
 						<li class="dropdown">
 							
 						</li>
@@ -43,9 +37,7 @@
 								<li><a href="admin/logout"><i class="lnr lnr-exit"></i> <span>Đăng xuất</span></a></li>
 							</ul>
 						</li>
-						<!-- <li>
-							<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
-						</li> -->
+				
 					</ul>
 				</div>
 			</div>
@@ -61,11 +53,14 @@
 							<a href="/listteacher" ><i class="lnr lnr-file-empty"></i> <span>Quản Lý Cán Bộ</span></a>
 						</li>
 						<li>
+							<a href="/listres" ><i class="lnr lnr-file-empty"></i> <span>Lĩnh Vực Nghiên Cứu</span></a>
+						</li>
+						<li>
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Quản Lý Đơn Vị</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
-									<li><a href="admin/quanlydonvi" class="">Danh Sách Đơn vị</a></li>
-									<li><a href="admin/adddonvi" class="">Thêm Mới</a></li>
+									<li><a href="quanlydonvi" class="">Danh Sách Đơn vị</a></li>
+									<li><a href="adddonvi" class="">Thêm Mới</a></li>
 								</ul>
 							</div>
 						</li>

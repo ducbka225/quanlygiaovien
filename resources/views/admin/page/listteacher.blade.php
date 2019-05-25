@@ -29,6 +29,9 @@
 									           <strong>{{ $message }}</strong>
 									   </div>
 									   @endif
+                                        @if(Session::has('message'))
+                                            <div class="alert alert-success">{{Session::get('message')}}</div>
+                                        @endif
                                     </div>
                                     <div>
                                     	<form method="post" enctype="multipart/form-data" action="{{ url('importexcel') }}">
@@ -43,7 +46,7 @@
 									        <input type="submit" name="upload" class="btn btn-primary" value="Import excel">
 									       </td>
 									        <td width="40%" align="right">
-									       		<button class="btn btn-primary"><a href="" style="color: white">Thêm Mới</a></button>
+									       		<button class="btn btn-primary"><a href="addteacher" style="color: white">Thêm Mới</a></button>
 									       </td>
 									      </tr>
 									     </table>
@@ -74,8 +77,8 @@
                                 <td>{{$u->hocvi}}</td>
                                 <td>{{$u->department->department_name}}</td>
                                 <td class="center">
-							        <a href="deletepost" title="Xóa"> Sửa</a> |
-							         <a href="deletepost" title="Xóa"> Xóa</a> 
+							        <a href="editteacher/{{$u->id}}" title="Sửa"> Sửa</a> |
+							         <a href="deleteteacher/{{$u->id}}" title="Xóa"> Xóa</a> 
                                 </td>
                             </tr>
                             @endforeach
@@ -83,12 +86,13 @@
                         </tbody>
                     </table>
                 </div>
-                            </div>      
-                        </div>
-                    </div>   
-                </div>
-            </div>         
+            </div>      
+        </div>
+    </div>   
+</div>
+</div>         
             <!-- /.container-fluid -->
-    </div>
-</div>    
+</div>
+</div>   
+
 @endsection
