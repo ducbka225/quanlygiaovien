@@ -26,9 +26,8 @@ class studentController extends Controller
 	//ajax get user by department
     public function searchByDep(Request $req) {
 	    $result = DB::table('users')
-            ->join('department_user','department_user.id_user','=','users.id')
-            ->join('department', 'department_user.id_department','=','department.id')
-            ->where(['department_user.id_department' => $req->id])
+            ->join('department', 'users.id_department','=','department.id')
+            ->where(['users.id_department' => $req->id])
             ->select('users.*', 'department.department_name')
             ->get();    
 	    return response()->json($result);
@@ -37,8 +36,7 @@ class studentController extends Controller
   	//ajax get user by lecture
     public function searchByLec(Request $req) {
 	    $result = DB::table('users')
-            ->join('department_user','department_user.id_user','=','users.id')
-            ->join('department', 'department_user.id_department','=','department.id')
+            ->join('department', 'users.id_department','=','department.id')
             ->join('user_lecture', 'user_lecture.id_user', '=', 'users.id')
             ->where(['user_lecture.id_lecture_qt' => $req->idlec])
             ->select('users.*', 'department.department_name')
@@ -57,8 +55,6 @@ class studentController extends Controller
         //get lecture_qt by user
         $lecture = User_Lecture::where('id_user', $id)->get();
 
-        //get department
-        $department_user = Department_User::where('id_user', $id)->first();
-		return view('student.infoteacher', compact('user', 'research', 'lecture', 'department_user'));
+		return view('student.infoteacher', compact('user', 'research', 'lecture'));
 	}	
 }

@@ -54,3 +54,6 @@ Route::get('/quanlydonvi', 'AdminController@getQuanLyDonVi')->middleware('adminL
 
 //listteacher
 Route::get('/listteacher', 'AdminController@getListTeacher')->middleware('adminLogin');
+
+//import excel
+Route::post('importexcel', 'ImportExcelController@importexcel')->name('importexcel');

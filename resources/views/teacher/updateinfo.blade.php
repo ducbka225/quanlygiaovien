@@ -78,7 +78,7 @@
     <div class="col-sm-5" >
     	<div id="info-gv" style="padding-left: 30px">
     		<p class="title-tt">{{$user->hocvi}}. {{$user->fullname}}</p>
-	    	<p>Đơn vị: {{$department_user->department->department_name}}</p>
+	    	<p>Đơn vị: {{$user->department->department_name}}</p>
 	    	<p>Học vị, hàm vị: {{$user->hocvi}}</p>
 	    	<p>VNU email: {{$user->email}}</p>
 	    	<p>Website: abcd.com</p>

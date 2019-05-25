@@ -56,6 +56,7 @@ class AdminController extends Controller
     }
 
     public function getListteacher(){
-    	return view('admin.page.listteacher');
+    	$users = User::where('role', 0)->get();
+    	return view('admin.page.listteacher', compact('users'));
     }
 }

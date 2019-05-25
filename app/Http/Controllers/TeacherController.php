@@ -33,12 +33,9 @@ class TeacherController extends Controller
             ->select('research_field.*')
             ->get();
 
-        //get department
-        $department_user = Department_User::where('id_user', $id)->first();
-
         //get all research
         $research_field = Reseach_Field::all();
-    	return view('teacher.updateinfo', compact('user', 'research', 'lecture', 'department_user', 'research_field', 'lectureadd'));
+    	return view('teacher.updateinfo', compact('user', 'research', 'lecture', 'research_field', 'lectureadd'));
     }
 
     // login

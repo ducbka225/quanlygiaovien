@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('password')->nullable();
             $table->integer('level');
+            $table->integer('id_department')->unsigned();
+            $table->foreign('id_department')->references('id')->on('department')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
