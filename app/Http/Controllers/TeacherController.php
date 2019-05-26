@@ -33,9 +33,10 @@ class TeacherController extends Controller
             ->select('research_field.*')
             ->get();
 
+        $res = Lecture_Research::all();
         //get all research
         $research_field = Reseach_Field::all();
-    	return view('teacher.updateinfo', compact('user', 'research', 'lecture', 'research_field', 'lectureadd'));
+    	return view('teacher.updateinfo', compact('user', 'research', 'lecture', 'research_field', 'lectureadd', 'res'));
     }
 
     // login
@@ -96,11 +97,37 @@ class TeacherController extends Controller
         return response()->json($result);
     }
 
+    //ajax add lecture_research
+    public function addRes(Request $req) {
+        $id = Auth::User()->id;
+        $lecture = User_Research::where('id_lecture_research', $req->id_lecture_research)
+                                ->where('id_user', $id)->first();
+        if($lecture != null){
+            return redirect()->back()->with('success', 'Thành Công');
+        }
+
+        else
+        {
+        $lecture_qt = new User_Research;
+        $lecture_qt->id_user = $id;
+        $lecture_qt->id_lecture_research = $req->id_lecture_research;
+        $lecture_qt->save();
+        }
+        return redirect()->back()->with('message', 'Thành Công');
+    }
+
     //delete lecture_qt
     public function deleteLecture_qt($id){
         $lecture = User_Lecture::where('id_lecture_qt', $id)->first();
         $lecture->delete();
         return redirect()->back()->with('message', 'Đã Xóa');
+    }
+
+    //delete lecture_res
+    public function deleteLecture_res($id){
+        $lecture = User_Research::where('id_lecture_research', $id)->first();
+        $lecture->delete();
+        return redirect()->back()->with('success', 'Đã Xóa');
     }
 
     //updateinfo

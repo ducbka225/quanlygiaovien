@@ -25,9 +25,14 @@ Route::get('/teacher/logout','TeacherController@getLogout');
 
 // ajax add lecture_qt
 Route::post('addlecture_qt', 'TeacherController@addLecture_qt')->middleware('teacherLogin');
+// ajax add lecture_reseach
+Route::post('adduserres', 'TeacherController@addRes')->middleware('teacherLogin');
 
 //delete lecture_qt
 Route::get('deletelecture_qt/{id}', 'TeacherController@deleteLecture_qt')->middleware('teacherLogin');
+
+//delete lecture_res
+Route::get('deletelecture_res/{id}', 'TeacherController@deleteLecture_res')->middleware('teacherLogin');
 
 //update avatar
 
