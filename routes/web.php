@@ -31,6 +31,9 @@ Route::get('deletelecture_qt/{id}', 'TeacherController@deleteLecture_qt')->middl
 
 //update avatar
 
+//update info
+Route::get('updateinfo/{id}', 'TeacherController@getUpdate')->middleware('teacherLogin');
+Route::post('updateinfo/{id}', 'TeacherController@postUpdateInfo')->middleware('teacherLogin');
 
 //loginadmin
 Route::get('admin/login', 'AdminController@getLoginAdmin');
@@ -78,3 +81,4 @@ Route::post('addres', 'AdminController@postAddRes')->middleware('adminLogin');
 Route::get('addlectres', 'AdminController@getAddLectRes')->middleware('adminLogin');
 Route::post('addlectres', 'AdminController@postAddLectRes')->middleware('adminLogin');
 Route::get('deletelectres/{id}', 'AdminController@deleteLectRes');
+

@@ -39,7 +39,7 @@
 									    <div class="form-group">
 									     <table class="table">
 									      <tr>
-									       <td width="30">
+									       <td width="30%">
 									        <input type="file" name="select_file" required />
 									       </td>
 									       <td width="30%" align="left">
@@ -70,7 +70,7 @@
                         <tbody>
                         	@foreach($users as $u)
                             <tr class="odd gradeX" align="center">
-                                <td>{{$u->id}}</td>
+                                <td style="width: 10px">{{$u->id}}</td>
                                 <td>{{$u->fullname}}</td>
                                 <td>{{$u->username}}</td>
                                 <td>{{$u->email}}</td>

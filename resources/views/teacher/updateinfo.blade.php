@@ -82,6 +82,8 @@
 	    	<p>Học vị, hàm vị: {{$user->hocvi}}</p>
 	    	<p>VNU email: {{$user->email}}</p>
 	    	<p>Website: abcd.com</p>
+
+	    	<div class="btn btn-success"> <a href="/updateinfo/{{$user->id}}"> Cập Nhật Thông Tin</a></div>
     	</div>
     	<hr>
     	<div id="topic" style="padding-left: 30px">
@@ -122,12 +124,12 @@
 
     <div class="col-sm-5">
        <div>
-       	<img src="source/img/avatar.png" width="35%" >
+       	<img src="source/img/{{$user->avatar}}" width="35%" >
        		<div style="text-align: center; width: 35%">
-		        <div class="input-container">
+		       <!--  <div class="input-container">
 				  <i class="fa fa-photo icon"></i> 
 				  <input class="input-field" type="file" name="avatar" placeholder="Chọn ảnh đại diện">
-			  	</div>
+			  	</div> -->
        		</div>
        </div>
     </div>

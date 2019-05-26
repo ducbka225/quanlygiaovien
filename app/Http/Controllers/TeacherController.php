@@ -102,4 +102,45 @@ class TeacherController extends Controller
         $lecture->delete();
         return redirect()->back()->with('message', 'Đã Xóa');
     }
+
+    //updateinfo
+    public function getUpdate($id){
+        $user = User::where('id', $id)->first();
+        return view('teacher.update', compact('user'));
+    }
+
+    public function postUpdateInfo($id , Request $req){
+        $user = User::where('id', $id)->first();
+        $user->fullname = $req->fullname;
+        $user->email = $req->email;
+        $user->phone = $req->phone;
+        $user->hocvi = $req->hocvi;
+        if($req->hasFile('avatar')){
+            $file = $req->File('avatar');
+            $name = $file->getClientOriginalName();
+            $duoi = $file->getClientOriginalExtension();
+            if($duoi == 'jpg' || $duoi == 'png'){
+                $savefile = str_random(4)."_".$name;
+            while(file_exists("source/img/".$savefile))
+            {
+                $savefile = str_random(4)."_".$name;
+            }
+            $file->move("source/img/", $savefile);
+            $user->avatar = $savefile;  
+            }
+
+            else{
+
+                return redirect()->back()->with('loi', 'file không đúng định dạng');
+            }
+    
+        }
+        else{
+            $user->avatar = $user->avatar;
+        }  
+        $user->save();
+        return redirect()->back()->with('message', 'Cập nhật Thành Công');
+    }
+
+    
 }

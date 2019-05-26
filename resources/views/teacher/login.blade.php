@@ -9,16 +9,16 @@
     <title>Quản Lý Giáo Viên</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../source/admin_travel/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../source/admin/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="../source/admin_travel/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="../source/admin/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../source/admin_travel/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../source/admin/dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../source/admin_travel/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../source/admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -55,16 +55,16 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../source/admin_travel/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../source/admin/bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../source/admin_travel/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../source/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../source/admin_travel/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="../source/admin/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../source/admin_travel/dist/js/sb-admin-2.js"></script>
+    <script src="../source/admin/dist/js/sb-admin-2.js"></script>
 
 </body>
 
