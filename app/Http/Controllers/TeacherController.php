@@ -47,19 +47,19 @@ class TeacherController extends Controller
     public function postLogin(Request $request){    
            $this->validate($request,
             [
-                'email'=>'required|email',
+                'username'=>'required|min:4',
                 'password'=>'required|min:6',
                 
             ],
             [
-                'email.required'=>'Vui lòng nhập email!',
-                'email.email'=>'Không đúng định dạng email',
+                'username.required'=>'Vui lòng nhập Tài Khoản!',
+                'username.min'=>'Tài Khoản phải có ít nhất 4 ký tự',
                 'password.required'=>'Vui lòng nhập mật khẩu',
                 'password.min'=>'Mật khẩu có ít nhất 6 ký tự',
             ]
         );
         
-        $user = array('email'=>$request->email, 'password'=>$request->password, 'role'=>$request->role);
+        $user = array('username'=>$request->username, 'password'=>$request->password, 'role'=>$request->role);
         if(Auth::attempt($user)){
             return redirect('/search-teacher');
         }

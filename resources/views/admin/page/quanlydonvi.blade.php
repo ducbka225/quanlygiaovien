@@ -70,8 +70,8 @@
                         <td>{{$d->phone}}</td>
                         <td>{{$d->website}}</td>
                         <td class="center">
-                            <a href="editdep/{{$d->id}}" title="Sửa"> Sửa</a> |
-                            <a href="deletedep/{{$d->id}}" title="Xóa"> Xóa</a> 
+                            <a href="editdep/{{$d->id}}" title="Sửa"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> |
+                            <a href="deletedep/{{$d->id}}" title="Xóa"> <i class="fa fa-trash-o" aria-hidden="true"></i></a> 
                         </td>
                     </tr>
                     @endforeach

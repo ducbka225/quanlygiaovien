@@ -78,10 +78,10 @@
 		<div class="col-sm-5" >
 			<div id="info-gv" style="padding-left: 30px">
 				<p class="title-tt">{{$user->hocvi}}. {{$user->fullname}}</p>
-				<p>Đơn vị: {{$user->department->department_name}}</p>
-				<p>Học vị, hàm vị: {{$user->hocvi}}</p>
-				<p>VNU email: {{$user->email}}</p>
-				<p>Website: abcd.com</p>
+				<p> <i class="fa fa-university" aria-hidden="true"></i> Đơn vị: {{$user->department->department_name}}</p>
+				<p> <i class="fa fa-graduation-cap" aria-hidden="true"></i>  Học vị, hàm vị: {{$user->hocvi}}</p>
+				<p><i class="fa fa-envelope-open-o" aria-hidden="true"></i> VNU email: {{$user->email}}</p>
+				<p><i class="fa fa-telegram" aria-hidden="true"></i> Website: abcd.com</p>
 
 				<div class="btn btn-success"> <a href="/updateinfo/{{$user->id}}"> Cập Nhật Thông Tin</a></div>
 			</div>

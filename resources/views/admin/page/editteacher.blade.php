@@ -32,8 +32,12 @@
 								<input class="form-control" name="fullname" value="{{$user->fullname}}" required />
 							</div>
 							<div class="form-group">
+								<label>Mã Cán Bộ</label>
+								<input class="form-control" name="maCB" value="{{$user->maCB}}" required />
+							</div>
+							<div class="form-group">
 								<label>Email</label>
-								<input class="form-control" name="email" value="{{$user->email}}" required type="email" />
+								<input class="form-control" name="email" value="{{$user->email}}" required type="email" readonly />
 							</div>
 							
 							<div class="form-group">

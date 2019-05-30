@@ -24,19 +24,19 @@ class AdminController extends Controller
     public function postLogin(Request $request){    
            $this->validate($request,
             [
-                'email'=>'required|email',
+                'username'=>'required|min:4',
                 'password'=>'required|min:6',
                 
             ],
             [
-                'email.required'=>'Vui lòng nhập email!',
-                'email.email'=>'Không đúng định dạng email',
+                'username.required'=>'Vui lòng nhập Tài Khoản',
+                'username.min'=>'Tài Khoản phải có ít nhất 4 ký tự',
                 'password.required'=>'Vui lòng nhập mật khẩu',
                 'password.min'=>'Mật khẩu có ít nhất 6 ký tự',
             ]
         );
         
-        $user = array('email'=>$request->email, 'password'=>$request->password, 'role'=>$request->role);
+        $user = array('username'=>$request->username, 'password'=>$request->password, 'role'=>$request->role);
         if(Auth::attempt($user)){
             return redirect('/listteacher');
         }
@@ -70,6 +70,25 @@ class AdminController extends Controller
     }
 
     public function postAddTeacher(Request $req){
+
+        $this->validate($req,
+            [
+                'username'=>'required|min:4|unique:users,username',
+                'email'=>'required|unique:users,email',
+                'password'=>'required|min:6',
+                
+            ],
+            [
+                'username.required'=>'Vui lòng nhập Tài Khoản',
+                'username.min'=>'Tài Khoản phải có ít nhất 4 ký tự',
+                'username.unique'=>'Tài Khoản đã tồn tại',
+                'email.required'=>'Vui lòng nhập email!',
+                'email.unique'=>'Email đã tồn tại',
+                'password.required'=>'Vui lòng nhập mật khẩu',
+                'password.min'=>'Mật khẩu có ít nhất 6 ký tự',
+            ]
+        );
+
         $user1 = User::where('email', $req->email)->count('id');
         $user2 = User::where('username', $req->username)->count('id');
         if($user1 != 0 || $user1 != 0){
@@ -103,6 +122,7 @@ class AdminController extends Controller
         $user->email = $req->email;
         $user->phone = $req->phone;
         $user->hocvi = $req->hocvi;
+        $user->maCB = $req->maCB;
         $user->id_department = $req->id_department;
         $user->save();
         return redirect()->route('listteacher')->with('message', 'Sửa Thành Công');
@@ -185,6 +205,11 @@ class AdminController extends Controller
         $lectres->name = $req->name;
         $lectres->id_research_field = $req->id_research_field;
         $lectres->save();
+
+        $lectqt = new Lecture_qt;
+        $lectqt->name = $req->name;
+        $lectqt->id_research_field = $req->id_research_field;
+        $lectqt->save();
         return redirect()->route('listres')->with('message', 'Thêm Thành Công');
     }
 

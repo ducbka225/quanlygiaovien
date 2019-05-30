@@ -15,18 +15,19 @@ class UsersImport implements ToModel
     public function model(array $row)
     {
         
-        $u = User::where('email', $row[2])->count('id');
-            if($u == 0){
+        $u = User::where('email', $row[4])->count('id');
+            if($u == 0 && $row[0] != "STT" ){
                 return new User([
-                'username'     => $row[0],
-                'fullname'     => $row[1],
-                'email'    => $row[2],
-                'hocvi'    => $row[3],
-                'phone'    => $row[4],
-                'role'    => $row[5],
-                'id_department'    => $row[6],
-                'password' => \Hash::make('123123'),
+                'username'     => $row[1],
+                'fullname'     => $row[3],
+                'email'    => $row[4],
+                'hocvi'    => "Thạc Sĩ",
+                'phone'    => 0,
+                'role'    => 0,
+                'id_department'    => 1,
+                'password' => \Hash::make($row[2]),
                 'avatar'    => 'avatar.png',
+                'maCB'=>'maCB',
             ]);
         }
     }
